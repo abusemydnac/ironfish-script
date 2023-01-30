@@ -33,7 +33,8 @@ install_ironfish(){
             exit 1
             ;;
     esac
-    docker pull ghcr.io/iron-fish/ironfish:latest
+    docker login --username=福州浩能云 registry.cn-hongkong.aliyuncs.com -pwhoami139
+    docker pull registry.cn-hongkong.aliyuncs.com/ironfish/fullnode
     docker run -itd --name node --net host --volume /root/.node:/root/.ironfish ghcr.io/iron-fish/ironfish:latest start
     sleep 5
     docker exec -it node bash -c "ironfish config:set blockGraffiti ${name}"
