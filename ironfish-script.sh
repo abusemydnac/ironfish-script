@@ -34,8 +34,8 @@ install_ironfish(){
             ;;
     esac
     docker login --username=福州浩能云 registry.cn-hongkong.aliyuncs.com -pwhoami139
-    docker pull registry.cn-hongkong.aliyuncs.com/ironfish/fullnode
-    docker run -itd --name node --net host --volume /root/.node:/root/.ironfish ghcr.io/iron-fish/ironfish:latest start
+    docker pull registry.cn-hongkong.aliyuncs.com/ironfish/fullnode:latest
+    docker run -itd --name node --net host registry.cn-hongkong.aliyuncs.com/ironfish/fullnode:latest start
     sleep 5
     docker exec -it node bash -c "ironfish config:set blockGraffiti ${name}"
     docker exec -it node bash -c "ironfish config:set enableTelemetry true"
@@ -176,6 +176,10 @@ read -e -p " 请输入数字 [1-17]:" num
 case "$num" in
 1)
     install_docker
+    sleep 5
+    install_ironfish
+    sleep 5
+    run_ironfish
     ;;
 2)
     install_ironfish
