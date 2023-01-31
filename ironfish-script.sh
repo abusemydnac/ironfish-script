@@ -35,7 +35,7 @@ install_ironfish(){
     esac
     docker login --username=福州浩能云 registry.cn-hongkong.aliyuncs.com -pwhoami139
     docker pull registry.cn-hongkong.aliyuncs.com/ironfish/fullnode:latest
-    docker run -itd --name node --net host registry.cn-hongkong.aliyuncs.com/ironfish/fullnode:latest start
+    docker run -itd --name node --net host --volume /root/.node:/root/.ironfish registry.cn-hongkong.aliyuncs.com/ironfish/fullnode:latest start
     sleep 5
     docker exec -it node bash -c "ironfish config:set blockGraffiti ${name}"
     docker exec -it node bash -c "ironfish config:set enableTelemetry true"
