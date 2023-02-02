@@ -179,8 +179,7 @@ case "$num" in
     install_ironfish
     sleep 5
     run_ironfish
-    sleep 5
-    mine_ironfish
+   
     ;;
 2)
     install_ironfish
